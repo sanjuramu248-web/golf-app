@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const winner_controller_1 = require("../controllers/winner.controller");
+const auth_middleware_1 = require("../middlewares/auth.middleware");
+const auth_middleware_2 = require("../middlewares/auth.middleware");
+const router = (0, express_1.Router)();
+router.get("/me", auth_middleware_1.authenticate, winner_controller_1.getMyWinnings);
+router.patch("/:id/proof", auth_middleware_1.authenticate, winner_controller_1.uploadProof);
+router.get("/", auth_middleware_1.authenticate, auth_middleware_2.requireAdmin, winner_controller_1.getAllWinners);
+router.patch("/:id/verify", auth_middleware_1.authenticate, auth_middleware_2.requireAdmin, winner_controller_1.verifyWinner);
+router.patch("/:id/pay", auth_middleware_1.authenticate, auth_middleware_2.requireAdmin, winner_controller_1.markPaid);
+exports.default = router;

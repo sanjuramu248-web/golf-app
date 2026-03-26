@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const draw_controller_1 = require("../controllers/draw.controller");
+const auth_middleware_1 = require("../middlewares/auth.middleware");
+const router = (0, express_1.Router)();
+router.get("/", auth_middleware_1.authenticate, draw_controller_1.getDraws);
+router.get("/:id", auth_middleware_1.authenticate, draw_controller_1.getDrawById);
+router.post("/", auth_middleware_1.authenticate, auth_middleware_1.requireAdmin, draw_controller_1.createDraw);
+router.post("/simulate", auth_middleware_1.authenticate, auth_middleware_1.requireAdmin, draw_controller_1.simulateDraw);
+router.post("/:id/publish", auth_middleware_1.authenticate, auth_middleware_1.requireAdmin, draw_controller_1.publishDraw);
+exports.default = router;

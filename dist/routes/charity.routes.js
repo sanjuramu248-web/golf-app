@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const charity_controller_1 = require("../controllers/charity.controller");
+const auth_middleware_1 = require("../middlewares/auth.middleware");
+const auth_middleware_2 = require("../middlewares/auth.middleware");
+const router = (0, express_1.Router)();
+router.get("/", charity_controller_1.getCharities);
+router.get("/:id", charity_controller_1.getCharityById);
+router.post("/select", auth_middleware_1.authenticate, charity_controller_1.selectCharity);
+router.get("/my-selection", auth_middleware_1.authenticate, charity_controller_1.getMyCharitySelection);
+router.post("/", auth_middleware_1.authenticate, auth_middleware_2.requireAdmin, charity_controller_1.createCharity);
+router.patch("/:id", auth_middleware_1.authenticate, auth_middleware_2.requireAdmin, charity_controller_1.updateCharity);
+router.delete("/:id", auth_middleware_1.authenticate, auth_middleware_2.requireAdmin, charity_controller_1.deleteCharity);
+router.post("/:id/events", auth_middleware_1.authenticate, auth_middleware_2.requireAdmin, charity_controller_1.addCharityEvent);
+exports.default = router;
