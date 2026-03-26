@@ -1,0 +1,49 @@
+{
+  "name": "digital_heros",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "push": "npx drizzle-kit push",
+    "generate": "npx drizzle-kit generate",
+    "migrate": "npx drizzle-kit migrate",
+    "db:sync": "npx drizzle-kit generate && npx drizzle-kit migrate",
+    "seed": "npx tsx src/db/seed.ts",
+    "seed:admin": "npx tsx src/db/seed-admin.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.5.0",
+    "drizzle-kit": "^0.31.10",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.100.0",
+    "@types/nodemailer": "^7.0.11",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "drizzle-orm": "^0.45.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^8.0.4",
+    "postgres": "^3.4.8",
+    "stripe": "^20.4.1",
+    "zod": "^4.3.6"
+  }
+}
